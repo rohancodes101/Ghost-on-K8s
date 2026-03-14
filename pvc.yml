@@ -1,0 +1,22 @@
+#It is a "request" for storage that stays alive even if your MySQL Pod restarts or dies.
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata: 
+  name: ghost-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+#The volume can be mounted as read-write by a single node at a time.
+  storageClassName: local-path
+#local-path means, the storage of the vm or the docker container we are runnign/executing.
+  resources:
+    requests:
+      storage: 2Gi
+
+
+#when you do k get pvc, it wil lbe in pending
+#Your PVC is Pending because no pod is currently requesting it — with local-path storage the volume is created only when a pod uses the claim.
+#
+#
+#
+#Generally when you create a stateful set, you dont create a pvc, the stateful yml code itself contains code to autocreate pvc

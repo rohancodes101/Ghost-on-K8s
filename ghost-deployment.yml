@@ -1,0 +1,37 @@
+kind: Deployment
+#deployment is bcoz, Unlike the database, Ghost is "stateless" (the application code doesn't change, only the data in the DB does). If a Ghost Pod dies, Kubernetes just spins up a fresh new one.
+apiVersion: apps/v1
+metadata:
+  name: ghost
+spec:
+  replicas: 1
+  selector:
+    #its like unique identifier
+    matchLabels:
+      app: ghost
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+    #this is used to mention which image we use to build this container
+      containers:
+      - name: ghost
+        image: ghost:5
+        ports:
+        - containerPort: 2368
+        env:
+        - name: database__client
+          value: mysql
+        - name: database__connection__host
+          value: mysql-service
+        - name: database__connection__user
+          value: root
+        - name: database__connection__password
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_PASSWORD
+        - name: database__connection__database
+          value: ghost
+

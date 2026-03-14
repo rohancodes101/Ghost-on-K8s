@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql-service
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: mysql
+#It tells the Service to send traffic to any Pod labeled app: mysql
+  clusterIP: None
+
+#This creates internal DNS: mysql.ghost-blog.svc.cluster.local and  Ghost will connect using: mysql:3306
