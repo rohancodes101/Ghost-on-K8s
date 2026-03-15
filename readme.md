@@ -92,7 +92,7 @@ http://<AZURE_VM_PUBLIC_IP>
 
 ---
 
-![Building Ghost](images/terminal.jpg)
+![Building Ghost](images/terminal.png)
 # Possible enhancements for production-grade systems:
 * Horizontal Pod Autoscaling (HPA)
 * GitOps deployment using **ArgoCD**
