@@ -1,7 +1,7 @@
 # Ghost on Kubernetes (K3s)
 
 Production-Ready **Ghost**,  **blogging platform** running on a **K3s cluster**, using **Traefik Ingress, MySQL StatefulSet, Kubernetes Secrets, and Persistent Storage**.
-
+![Main Banner](images/main.jpg)
 This project demonstrates how to deploy a **stateful multi-tier application on Kubernetes** with proper networking, storage, and security practices.
 
 ---
@@ -13,7 +13,7 @@ This project deploys a **fully functional blogging platform (Ghost)** on Kuberne
 # Architecture Overview
 
 The system runs on a **single-node K3s cluster** inside an Azure Ubuntu VM and includes:
-
+![Architecture Flow](images/flow_diagram.jpg)
 * **Ghost Deployment** – stateless application pods  
 * **MySQL StatefulSet** – stable network identity with persistent storage via **PVC**  
 * **ClusterIP Services** – internal DNS-based communication  
@@ -92,9 +92,8 @@ http://<AZURE_VM_PUBLIC_IP>
 
 ---
 
-# Future Enhancements
-
-Possible enhancements for production-grade systems:
+![Building Ghost](images/terminal.jpg)
+# Possible enhancements for production-grade systems:
 * Horizontal Pod Autoscaling (HPA)
 * GitOps deployment using **ArgoCD**
 * Monitoring with **Prometheus + Grafana**
